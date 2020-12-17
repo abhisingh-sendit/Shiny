@@ -4,3 +4,4 @@ This is a Shiny dashboard which functions as modules to explain the trend of dri
 
 If you want to read the blog post check out this link:
 
+https://nycdatascience.com/blog/student-works/drive-to-survive-pga-tour/
