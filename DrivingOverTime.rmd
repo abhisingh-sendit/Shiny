@@ -1,0 +1,254 @@
+---
+title: "DrivingOverTime"
+author: "Abhi"
+date: "11/17/2020"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## R Markdown
+
+This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+
+When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+
+```{r}
+csv_filenames <- list.files('./DrivingSummary', pattern = 'csv')
+csv_filepaths <- paste0( './DrivingSummary/', csv_filenames, sep = '' )
+all_dfs <- lapply( csv_filepaths, FUN = function( fp ) read.csv( fp, stringsAsFactors = F ) )
+
+drive <- read.csv("DrivingSummary/DrivingDistance.csv") %>% mutate(., YEAR = 2020)
+drive <- read.csv("DrivingSummary/DrivingDistance (1).csv") %>% mutate(., YEAR = 2019) %>% bind_rows(., drive)
+drive <- read.csv("DrivingSummary/DrivingDistance (2).csv") %>% mutate(., YEAR = 2018) %>% bind_rows(., drive)
+drive <- read.csv("DrivingSummary/DrivingDistance (3).csv") %>% mutate(., YEAR = 2017) %>% bind_rows(., drive)
+drive <- read.csv("DrivingSummary/DrivingDistance (4).csv") %>% mutate(., YEAR = 2016) %>% bind_rows(., drive)
+drive <- read.csv("DrivingSummary/DrivingDistance (5).csv") %>% mutate(., YEAR = 2015) %>% bind_rows(., drive)
+drive <- read.csv("DrivingSummary/DrivingDistance (6).csv") %>% mutate(., YEAR = 2014) %>% bind_rows(., drive)
+drive <- read.csv("DrivingSummary/DrivingDistance (7).csv") %>% mutate(., YEAR = 2013) %>% bind_rows(., drive)
+drive <- read.csv("DrivingSummary/DrivingDistance (8).csv") %>% mutate(., YEAR = 2012) %>% bind_rows(., drive)
+drive <- read.csv("DrivingSummary/DrivingDistance (9).csv") %>% mutate(., YEAR = 2011) %>% bind_rows(., drive)
+drive <- read.csv("DrivingSummary/DrivingDistance (10).csv") %>% mutate(., YEAR = 2010) %>% bind_rows(., drive)
+drive <- read.csv("DrivingSummary/DrivingDistance (11).csv") %>% mutate(., YEAR = 2009) %>% bind_rows(., drive)
+drive <- read.csv("DrivingSummary/DrivingDistance (12).csv") %>% mutate(., YEAR = 2008) %>% bind_rows(., drive)
+drive <- read.csv("DrivingSummary/DrivingDistance (13).csv") %>% mutate(., YEAR = 2007) %>% bind_rows(., drive)
+drive <- read.csv("DrivingSummary/DrivingDistance (14).csv") %>% mutate(., YEAR = 2006) %>% bind_rows(., drive)
+drive <- read.csv("DrivingSummary/DrivingDistance (15).csv") %>% mutate(., YEAR = 2005) %>% bind_rows(., drive)
+drive <- read.csv("DrivingSummary/DrivingDistance (16).csv") %>% mutate(., YEAR = 2004) %>% bind_rows(., drive)
+drive <- read.csv("DrivingSummary/DrivingDistance (17).csv") %>% mutate(., YEAR = 2003) %>% bind_rows(., drive)
+drive <- read.csv("DrivingSummary/DrivingDistance (18).csv") %>% mutate(., YEAR = 2002) %>% bind_rows(., drive)
+drive <- read.csv("DrivingSummary/DrivingDistance (19).csv") %>% mutate(., YEAR = 2001) %>% bind_rows(., drive)
+drive <- read.csv("DrivingSummary/DrivingDistance (20).csv") %>% mutate(., YEAR = 2000) %>% bind_rows(., drive)
+drive <- read.csv("DrivingSummary/DrivingDistance (21).csv") %>% mutate(., YEAR = 1999) %>% bind_rows(., drive)
+drive <- read.csv("DrivingSummary/DrivingDistance (22).csv") %>% mutate(., YEAR = 1998) %>% bind_rows(., drive)
+drive <- read.csv("DrivingSummary/DrivingDistance (23).csv") %>% mutate(., YEAR = 1997) %>% bind_rows(., drive)
+drive <- read.csv("DrivingSummary/DrivingDistance (24).csv") %>% mutate(., YEAR = 1996) %>% bind_rows(., drive)
+drive <- read.csv("DrivingSummary/DrivingDistance (25).csv") %>% mutate(., YEAR = 1995) %>% bind_rows(., drive)
+drive <- read.csv("DrivingSummary/DrivingDistance (26).csv") %>% mutate(., YEAR = 1994) %>% bind_rows(., drive)
+drive <- read.csv("DrivingSummary/DrivingDistance (27).csv") %>% mutate(., YEAR = 1993) %>% bind_rows(., drive)
+drive <- read.csv("DrivingSummary/DrivingDistance (28).csv") %>% mutate(., YEAR = 1992) %>% bind_rows(., drive)
+drive <- read.csv("DrivingSummary/DrivingDistance (29).csv") %>% mutate(., YEAR = 1991) %>% bind_rows(., drive)
+drive <- read.csv("DrivingSummary/DrivingDistance (30).csv") %>% mutate(., YEAR = 1990) %>% bind_rows(., drive)
+drive <- read.csv("DrivingSummary/DrivingDistance (31).csv") %>% mutate(., YEAR = 1989) %>% bind_rows(., drive)
+drive <- read.csv("DrivingSummary/DrivingDistance (32).csv") %>% mutate(., YEAR = 1988) %>% bind_rows(., drive)
+drive <- read.csv("DrivingSummary/DrivingDistance (33).csv") %>% mutate(., YEAR = 1987) %>% bind_rows(., drive)
+drive <- read.csv("DrivingSummary/DrivingDistance (34).csv") %>% mutate(., YEAR = 1986) %>% bind_rows(., drive)
+drive <- read.csv("DrivingSummary/DrivingDistance (35).csv") %>% mutate(., YEAR = 1985) %>% bind_rows(., drive)
+drive <- read.csv("DrivingSummary/DrivingDistance (36).csv") %>% mutate(., YEAR = 1984) %>% bind_rows(., drive)
+drive <- read.csv("DrivingSummary/DrivingDistance (37).csv") %>% mutate(., YEAR = 1983) %>% bind_rows(., drive)
+drive <- read.csv("DrivingSummary/DrivingDistance (38).csv") %>% mutate(., YEAR = 1982) %>% bind_rows(., drive)
+drive <- read.csv("DrivingSummary/DrivingDistance (39).csv") %>% mutate(., YEAR = 1981) %>% bind_rows(., drive)
+drive <- read.csv("DrivingSummary/DrivingDistance (40).csv") %>% mutate(., YEAR = 1980) %>% bind_rows(., drive)
+```
+
+
+## Including Plots
+
+You can also embed plots, for example:
+
+```{r pressure, echo=FALSE}
+g1 <- ggplot(data = drive, aes(group= YEAR, x = YEAR, y = AVG.)) + geom_boxplot()
+
+g1
+```
+## Strokes Gained
+```{r}
+strokesGained <- read.csv("StrokesGainedTotal/StrokesGainedTotal (2).csv") %>% mutate(., YEAR = 2018) 
+strokesGained <- read.csv("StrokesGainedTotal/StrokesGainedTotal (3).csv") %>% mutate(., YEAR = 2017) %>% bind_rows(., strokesGained)
+strokesGained <- read.csv("StrokesGainedTotal/StrokesGainedTotal_2016.csv") %>% mutate(., YEAR = 2016) %>% bind_rows(., strokesGained)
+strokesGained <- read.csv("StrokesGainedTotal/StrokesGainedTotal (4).csv") %>% mutate(., YEAR = 2015) %>% bind_rows(., strokesGained)
+strokesGained <- read.csv("StrokesGainedTotal/StrokesGainedTotal (5).csv") %>% mutate(., YEAR = 2014) %>% bind_rows(., strokesGained)
+strokesGained <- read.csv("StrokesGainedTotal/StrokesGainedTotal (6).csv") %>% mutate(., YEAR = 2013) %>% bind_rows(., strokesGained)
+strokesGained <- read.csv("StrokesGainedTotal/StrokesGainedTotal (7).csv") %>% mutate(., YEAR = 2012) %>% bind_rows(., strokesGained)
+strokesGained <- read.csv("StrokesGainedTotal/StrokesGainedTotal (8).csv") %>% mutate(., YEAR = 2011) %>% bind_rows(., strokesGained)
+strokesGained <- read.csv("StrokesGainedTotal/StrokesGainedTotal (9).csv") %>% mutate(., YEAR = 2010) %>% bind_rows(., strokesGained)
+strokesGained <- read.csv("StrokesGainedTotal/StrokesGainedTotal (10).csv") %>% mutate(., YEAR = 2009) %>% bind_rows(., strokesGained)
+strokesGained <- read.csv("StrokesGainedTotal/StrokesGainedTotal (11).csv") %>% mutate(., YEAR = 2008) %>% bind_rows(., strokesGained)
+strokesGained <- read.csv("StrokesGainedTotal/StrokesGainedTotal (12).csv") %>% mutate(., YEAR = 2007) %>% bind_rows(., strokesGained)
+strokesGained <- read.csv("StrokesGainedTotal/StrokesGainedTotal (13).csv") %>% mutate(., YEAR = 2006) %>% bind_rows(., strokesGained)
+strokesGained <- read.csv("StrokesGainedTotal/StrokesGainedTotal (14).csv") %>% mutate(., YEAR = 2005) %>% bind_rows(., strokesGained)
+strokesGained <- read.csv("StrokesGainedTotal/StrokesGainedTotal (15).csv") %>% mutate(., YEAR = 2004) %>% bind_rows(., strokesGained)
+
+drivingAvg <- read.csv("DrivingAverage2004.csv")
+
+colnames(drivingAvg)[1] <- "YEAR"
+colnames(strokesGained)[1] <- "RANK"
+
+clean_rank_str <- function( rank_str ){
+   cleaned_str <- gsub( pattern = '[^0-9]', replacement = '', x = rank_str)
+   as.numeric(cleaned_str)
+}
+
+
+strokesGained <- strokesGained %>% mutate_at( c('RANK'), clean_rank_str )
+
+
+
+```
+##TOP DRIVER
+```{r}
+colnames(drive)[1] <- "RANK"
+
+topdrivers <- drive %>% 
+arrange(desc(AVG.)) %>% 
+group_by(YEAR) %>% slice(1:10)
+
+topdrivers_strokesGained <- merge(topdrivers, strokesGained, by=c("PLAYER.NAME","YEAR"))
+
+topdrivers_byYear = group_by(topdrivers_strokesGained, YEAR)
+topdrivers_rankByYear <- summarise(topdrivers_byYear, AVG.SG = mean(TOTAL.SG.T2G))
+
+
+plot_topDriverRanks <- ggplot(data = topdrivers_rankByYear, aes( x = YEAR, y = AVG.SG)) + geom_point() +  geom_smooth(method = "lm", se = FALSE) + stat_cor(label.x = 2005, label.y = 45) +
+  stat_regline_equation(label.x = 2005, label.y = 40)
+
+plot_topDriverRanks 
+
+
+```
+
+##PLOT TOP 5
+```{r}
+topclass5 <- filter(strokesGained, RANK <= 5)
+topclass5 <- filter(strokesGained, RANK.THIS.WEEK <= 5) %>% bind_rows(., topclass5)
+
+ij <- inner_join(topclass5, drive, by = "PLAYER.NAME")
+
+t1 <- merge(topclass5, drive, by=c("PLAYER.NAME","YEAR"))
+colnames(t1)[15] <- "AVG.I"
+
+by_year = group_by(t1, YEAR)
+t1A <- summarise(by_year, AVG. = mean(AVG.I))
+
+
+g2 <- ggplot(data = t1, aes(x = YEAR, y = AVG.)) + geom_point()
+
+ggp <- ggplot(NULL, aes(x = YEAR, y = AVG.)) +    # Draw ggplot2 plot based on two data frames
+  geom_line(data = t1A, col = "red") +
+  geom_line(data = drivingAvg, col = "blue")
+
+ggp      
+
+
+
+```
+##PLOT TOP 10
+```{r}
+topclass10 <- filter(strokesGained, RANK <= 10)
+topclass10 <- filter(strokesGained, RANK.THIS.WEEK <= 10) %>% bind_rows(., topclass10)
+
+ij <- inner_join(topclass10, drive, by = "PLAYER.NAME")
+
+t2 <- merge(topclass10, drive, by=c("PLAYER.NAME","YEAR"))
+colnames(t2)[15] <- "AVG.I"
+
+by_year2 = group_by(t2, YEAR)
+t2A <- summarise(by_year2, AVG. = mean(AVG.I))
+
+
+g2 <- ggplot(data = t1, aes(x = YEAR, y = AVG.)) + geom_point()
+
+ggp <- ggplot(NULL, aes(x = YEAR, y = AVG.)) +    # Draw ggplot2 plot based on two data frames
+  geom_line(data = t2A, col = "red") +
+  geom_line(data = drivingAvg, col = "blue")
+
+ggp               
+
+```
+##PLOT TOP 50
+```{r}
+topclass50 <- filter(strokesGained, RANK <= 50)
+topclass50 <- filter(strokesGained, RANK.THIS.WEEK <= 50) %>% bind_rows(., topclass50)
+
+ij <- inner_join(topclass50, drive, by = "PLAYER.NAME")
+
+t2 <- merge(topclass50, drive, by=c("PLAYER.NAME","YEAR"))
+colnames(t2)[15] <- "AVG.I"
+
+by_year2 = group_by(t2, YEAR)
+t3A <- summarise(by_year2, AVG. = mean(AVG.I))
+
+
+g2 <- ggplot(data = t1, aes(x = YEAR, y = AVG.)) + geom_point()
+
+ggp <- ggplot(NULL, aes(x = YEAR, y = AVG.)) +    # Draw ggplot2 plot based on two data frames
+  geom_line(data = t3A, col = "red") +
+  geom_line(data = drivingAvg, col = "blue")
+
+ggp               
+
+
+```
+##SGTTG LOAD
+```{r}
+strokesGainedTTG <- read.csv("StrokesGainedTTG/StrokesGainedTTG.csv") %>% mutate(., YEAR = 2020)
+strokesGainedTTG <- read.csv("StrokesGainedTTG/StrokesGainedTTG (1).csv") %>% mutate(., YEAR = 2019) %>% bind_rows(., strokesGainedTTG)
+strokesGainedTTG <- read.csv("StrokesGainedTTG/StrokesGainedTTG (2).csv") %>% mutate(., YEAR = 2018) %>% bind_rows(., strokesGainedTTG)
+strokesGainedTTG <- read.csv("StrokesGainedTTG/StrokesGainedTTG (3).csv") %>% mutate(., YEAR = 2017) %>% bind_rows(., strokesGainedTTG)
+strokesGainedTTG <- read.csv("StrokesGainedTTG/StrokesGainedTTG (4).csv") %>% mutate(., YEAR = 2016) %>% bind_rows(., strokesGainedTTG)
+strokesGainedTTG <- read.csv("StrokesGainedTTG/StrokesGainedTTG (5).csv") %>% mutate(., YEAR = 2015) %>% bind_rows(., strokesGainedTTG)
+strokesGainedTTG <- read.csv("StrokesGainedTTG/StrokesGainedTTG (6).csv") %>% mutate(., YEAR = 2014) %>% bind_rows(., strokesGainedTTG)
+strokesGainedTTG <- read.csv("StrokesGainedTTG/StrokesGainedTTG (7).csv") %>% mutate(., YEAR = 2013) %>% bind_rows(., strokesGainedTTG)
+strokesGainedTTG <- read.csv("StrokesGainedTTG/StrokesGainedTTG (8).csv") %>% mutate(., YEAR = 2012) %>% bind_rows(., strokesGainedTTG)
+strokesGainedTTG <- read.csv("StrokesGainedTTG/StrokesGainedTTG (9).csv") %>% mutate(., YEAR = 2011) %>% bind_rows(., strokesGainedTTG)
+strokesGainedTTG <- read.csv("StrokesGainedTTG/StrokesGainedTTG (10).csv") %>% mutate(., YEAR = 2010) %>% bind_rows(., strokesGainedTTG)
+strokesGainedTTG <- read.csv("StrokesGainedTTG/StrokesGainedTTG (2009).csv") %>% mutate(., YEAR = 2009) %>% bind_rows(., strokesGainedTTG)
+strokesGainedTTG <- read.csv("StrokesGainedTTG/StrokesGainedTTG (2008).csv") %>% mutate(., YEAR = 2008) %>% bind_rows(., strokesGainedTTG)
+strokesGainedTTG <- read.csv("StrokesGainedTTG/StrokesGainedTTG (11).csv") %>% mutate(., YEAR = 2007) %>% bind_rows(., strokesGainedTTG)
+strokesGainedTTG <- read.csv("StrokesGainedTTG/StrokesGainedTTG (12).csv") %>% mutate(., YEAR = 2006) %>% bind_rows(., strokesGainedTTG)
+strokesGainedTTG <- read.csv("StrokesGainedTTG/StrokesGainedTTG (13).csv") %>% mutate(., YEAR = 2005) %>% bind_rows(., strokesGainedTTG)
+strokesGainedTTG <- read.csv("StrokesGainedTTG/StrokesGainedTTG (14).csv") %>% mutate(., YEAR = 2004) %>% bind_rows(., strokesGainedTTG)
+colnames(strokesGainedTTG)[1] <- "RANK"
+clean_rank_str <- function( rank_str ){
+   cleaned_str <- gsub( pattern = '[^0-9]', replacement = '', x = rank_str)
+   as.numeric(cleaned_str)
+}
+
+
+strokesGainedTTG <- strokesGainedTTG %>% mutate_at( c('RANK'), clean_rank_str )
+```
+
+##SGTTG DRIVERS
+```{r}
+
+topdrivers_n <- drive %>% 
+arrange(desc(AVG.)) %>% 
+group_by(YEAR) %>% slice(1:10)
+
+topdrivers_strokesGainedTTG <- merge(topdrivers_n, strokesGainedTTG, by=c("PLAYER.NAME","YEAR"))
+
+topdrivers_byYear = group_by(topdrivers_strokesGainedTTG, YEAR)
+topdrivers_rankByYear <- summarise(topdrivers_byYear, AVG = mean(AVERAGE))
+
+
+plot_topDriverRanks <- ggplot(data = topdrivers_rankByYear, aes( x = YEAR, y = AVG)) + geom_bar(stat="identity")
+
+plot_topDriverRanks
+
+```
+
+
+
+
