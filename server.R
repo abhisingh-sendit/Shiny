@@ -52,6 +52,11 @@ function(input, output) {
     
   )
 
+  output$blastNoReg <- renderPlotly(
+    topdrivers() %>%
+      ggplot(aes(x = YEAR, y = AVG.SG.T2G)) + geom_point() +
+      ggtitle("Average drive")
+  )
   
   output$blast <- renderPlotly(
     topdrivers() %>%
@@ -62,6 +67,12 @@ function(input, output) {
   topdrivers_putting <- reactive({
     topdrive_func() %>% group_by(YEAR) %>% summarise(AVG.SG.P = mean(TOTAL.SG.P))
   })
+  
+  output$touchNoReg <- renderPlotly(
+    topdrivers_putting() %>%
+      ggplot(aes(x = YEAR, y =AVG.SG.P)) + geom_point() +
+      ggtitle("Average putting")
+  )
   
   output$touch <- renderPlotly(
     topdrivers_putting() %>%
@@ -80,7 +91,7 @@ function(input, output) {
   )
   
   output$timeanal <- renderPlotly(
-    driveOverTime %>% ggplot(aes(x = YEAR, y = AVERAGE)) + geom_line() + ggtitle("Driving Over Time")
+    driveOverTime %>% ggplot(aes(x = YEAR, y = AVERAGE)) + geom_line() + ggtitle("Driving Distance Over Time (1980-2020)")
   )
     
     
