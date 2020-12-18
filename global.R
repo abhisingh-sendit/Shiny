@@ -1,3 +1,14 @@
+library(tidyverse)
+library(plotly)
+library(DT)
+library(shinydashboard)
+library(shiny)
+library(shinythemes)
+
+
+######Driving over time
+driveOverTime <- read.csv("DrivingAverageOverTime.csv") 
+
 ##################################################################################################
 #############################################################
 #################################
@@ -82,6 +93,10 @@ clean_rank_str <- function( rank_str ){
 
 strokesGained <- strokesGained %>% mutate_at( c('RANK'), clean_rank_str )
 ######################################################################################################################################
+#####strokesGained T2G for everyone in 2018, and 2004
+strokesGainedStrong <- strokesGained %>% filter(YEAR==2018) %>% summarise(name = "ALL", value = sum(TOTAL.SG.T2G)) %>% select(name, value)
+strokesGainedWeak <- strokesGained %>% filter(YEAR==2004) %>% summarise(name = "ALL", value = sum(TOTAL.SG.T2G)) %>% select(name, value)
+
 
 
 
